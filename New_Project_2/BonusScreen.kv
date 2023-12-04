@@ -1,0 +1,12 @@
+<BonusScreen>:
+    name: 'bonus'
+    FloatLayout:
+        size_hint: None, None
+
+    ImageButton:
+        id: img_btn
+        source: "path_to_image"
+        center_x: root.width * 1
+        center_y: root.height * 1
+        color: 0.2, 0.45, 0.55, 1
+        on_press: root.transition_back()

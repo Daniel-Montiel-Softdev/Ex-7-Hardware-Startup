@@ -15,6 +15,7 @@ from kivy.animation import Animation
 from dpeaDPi.DPiStepper import *
 from time import sleep
 
+from dpeaDPi.DPiComputer import *
 
 from pidev.MixPanel import MixPanel
 from pidev.kivy.PassCodeScreen import PassCodeScreen
@@ -37,6 +38,7 @@ wait_to_finish_moving_flg = True
 stepperStatus = dpiStepper.getStepperStatus(0)
 time = datetime
 
+dpiComputer = DPiComputer()
 
 
 MIXPANEL_TOKEN = "x"
@@ -89,6 +91,8 @@ class MainScreen(Screen):
     dpiStepper.setAccelerationInStepsPerSecondPerSecond(0, accel_steps_per_second_per_second)
     dpiStepper.setAccelerationInStepsPerSecondPerSecond(1, accel_steps_per_second_per_second)
     dpiStepper.setBoardNumber(0)
+
+    dpiComputer.initialize()
 
 
 
@@ -239,6 +243,7 @@ class MainScreen(Screen):
             dpiStepper.moveToHomeInSteps(stepper_num, self.directionToMoveTowardHome, self.homeSpeedInRevolutionsPerSecond, self.homeMaxDistanceToMoveInRevolutions)
 
             print(f"Pos = {currentPosition}")
+    def switch(self):
 
 
 
